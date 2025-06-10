@@ -11,9 +11,14 @@
   },
   "devDependencies": {
     "@turbo/gen": "1.9.7",
+    "@types/jest": "^29.5.14",
+    "artillery": "^2.0.23",
     "eslint": "7.32.0",
     "husky": "8.0.3",
+    "jest": "^30.0.0",
+    "playwright": "^1.52.0",
     "prettier": "2.5.1",
+    "ts-jest": "^29.3.4",
     "turbo": "latest"
   },
   "name": "xborg-tech-challenge",
