@@ -51,9 +51,9 @@ describe('UserRepository', () => {
       mockPrismaService.user.findUniqueOrThrow = jest
         .fn()
         .mockRejectedValue(new NotFoundException());
-      await expect(userRepository.find({id: '', address: ''})).rejects.toThrow(
-        new NotFoundException(),
-      );
+      await expect(
+        userRepository.find({ id: '', address: '' }),
+      ).rejects.toThrow(new NotFoundException());
     });
   });
 
@@ -91,7 +91,9 @@ describe('UserRepository', () => {
       };
       const error = new Error('Missing Required Fields') as any;
       mockPrismaService.user.create = jest.fn().mockRejectedValue(error);
-      await expect(userRepository.create(invalidSignup)).rejects.toThrow('Failed to create user');
+      await expect(userRepository.create(invalidSignup)).rejects.toThrow(
+        'Failed to create user',
+      );
     });
   });
 });
