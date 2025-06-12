@@ -6,5 +6,5 @@ config:
 
 scenarios:
   - flow:
-    - get:
-        url: "/api/health"
+      - get:
+          url: '/api/health'

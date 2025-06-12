@@ -33,5 +33,27 @@ describe('UserService', () => {
 
       expect(authResponse).toEqual(mockUser);
     });
+
+    it('signup service throws an error if userRespository.create() errors', async () => {
+      const error = new Error('DB failure');
+      mockUserRepository.create.rejects(error);
+
+      await expect(userService.signup(mockSignupRequest)).rejects.toThrow(error);
+    });
+
+    it('UserRepository throws error if input is missing required fields', async () => {
+      const badPayload = {
+        address: '',
+        userName: '',
+        email: '',
+        firstName: '',
+        lastName: ''
+      };
+
+      mockUserRepository.create.rejects(new Error('Invalid input'));
+
+      await expect(userService.signup(badPayload)).rejects.toThrow('Invalid input');
+    });
+
   });
 });
